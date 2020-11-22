@@ -20,8 +20,10 @@ public class HomePageObjects extends TestBase{
 	String dynamicItemXpathStr="//div[@class='col-lg-9']/div[@class='row']/descendant::a[text()='%s']";
 	By addToCart_Btn=By.xpath("//a[text()='Add to cart']");
 	By navigation_Cart_Link=By.xpath("//a[@class='nav-link'][text()='Cart']");
-	
-	
+	By logIn_Link=By.id("login2");
+	By userName_Inp=By.id("loginusername");
+	By password_Inp=By.id("loginpassword");
+	By LogIn_Btn=By.xpath("//button[text()='Log in']");
 			
 		public void clickOnHomeMenu() {
 			waitElementToBeClickable(navigation_Home_Link);
@@ -47,5 +49,12 @@ public class HomePageObjects extends TestBase{
 		
 		public void clickOnCartMainMenu() {
 			click(driver.findElement(navigation_Cart_Link),"Cart Main Menu Link");
+		}
+
+		public void login() {
+			click(driver.findElement(logIn_Link),"Login Link");
+			sendKeys(driver.findElement(userName_Inp),"UserName","user2@testemail.com");
+			sendKeys(driver.findElement(password_Inp),"Password","testqa");
+			click(driver.findElement(LogIn_Btn), "Login Button");
 		}
 }

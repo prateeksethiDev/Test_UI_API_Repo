@@ -14,7 +14,8 @@ public class AddToCartSteps {
 	
 
 	@Given("User is on Home Page")
-	public void user_is_on_home_page() throws Exception {		
+	public void user_is_on_home_page() throws Exception {	
+		homePage.login();
 		homePage.clickOnHomeMenu();
 		homePage.checkIfHomePageIsOpen();	
 	}

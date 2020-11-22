@@ -5,9 +5,19 @@
 <listener class-name="reusableComponents.ListenersImplementation"/>
 </listeners>
 
-  <test  name="Test" preserve-order="true">
+  <test  name="Add_To_Cart_Test" preserve-order="true">
     <classes>
       <class name="runners.AddToCartRunner"/>
+    </classes>
+  </test> 
+  <test  name="Delete_From_Cart_Test" preserve-order="true">
+    <classes>
+      <class name="runners.DeleteItemFromCartRunner"/>
+    </classes>
+  </test> 
+   <test  name="Purchase_Order_Test" preserve-order="true">
+    <classes>
+      <class name="runners.PurcaseOrderRunner"/>
     </classes>
   </test> 
 </suite> 

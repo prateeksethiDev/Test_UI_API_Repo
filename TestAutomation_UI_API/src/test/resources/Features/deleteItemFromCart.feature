@@ -1,9 +1,9 @@
 #Author: prateeksethiDev@gmail.com
 
-@tag
+@First
 Feature: User should be able to delete already added product from the cart
   
-  @tag2
+  
   Scenario Outline: User should be able to delete the product from the cart
     Given User is on Home Page
     When User navigated to cart section

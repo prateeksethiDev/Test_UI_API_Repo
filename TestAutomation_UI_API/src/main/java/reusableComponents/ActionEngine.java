@@ -79,6 +79,20 @@ public class ActionEngine {
 		return flag;
 	}
 	
+	public boolean isElementNotPresent(WebElement element,String fieldName) {
+		boolean flag=false;
+		try {
+			flag=!element.isDisplayed()?true:false;
+			//log success message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+" Presence of field is successful");
+			return flag;
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, fieldName+" unable to check presence of field "+fieldName+" due to exception=>"+e.getMessage());
+		}
+		return flag;
+	}
+	
 	public void selectDropDownByVisibleText(WebElement element,String fieldName,String visibleText) {
 		
 		try {
@@ -129,5 +143,50 @@ public class ActionEngine {
 	public void waitForElementToBeVisible(By locator) {
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	public void waitForElementIneVisible(By locator) {
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),20);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+	
+	public void assertWebElementNotPresent(By locator) {
+		try {
+			if(DriverFactory.getInstance().getDriver().findElements(locator).size()==0) {
+				//log success message in extent report
+				ExtentFactory.getInstance().getExtent().log(Status.PASS, "WebElement with locator: "+ locator+" not present, validation is passed");
+			}		
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "WebElement with locator: "+ locator+" is present, validation failed due to exception=>"+e.getMessage());
+		}
+	}
+	
+	public void assertWebElementPresent(By locator) {
+		try {
+			WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),20);
+			if(wait.until(ExpectedConditions.numberOfElementsToBe(locator, 1)).size()==1) {
+				//log success message in extent report
+				ExtentFactory.getInstance().getExtent().log(Status.PASS, "WebElement with locator: "+ locator+" present, validation is passed");
+			}		
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "WebElement with locator: "+ locator+" is not present, validation failed due to exception=>"+e.getMessage());
+		}
+	}
+	
+	public String getTextFromElement(By locator) {
+		String text="";
+		try {
+			WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),20);
+			if(wait.until(ExpectedConditions.numberOfElementsToBe(locator, 1)).size()==1) {
+				text=DriverFactory.getInstance().getDriver().findElement(locator).getText();
+				//log success message in extent report
+				ExtentFactory.getInstance().getExtent().log(Status.PASS, "WebElement with locator: "+ locator+" present, validation is passed");
+			}		
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "WebElement with locator: "+ locator+" is not present, validation failed due to exception=>"+e.getMessage());
+		}
+		return text;
 	}
 }
