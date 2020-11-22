@@ -2,11 +2,8 @@ package testBase;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.cucumber.java.Before;
 import reusableComponents.ActionEngine;
 import reusableComponents.PropertiesOperation;
 
@@ -27,13 +24,15 @@ public class TestBase extends ActionEngine{
 			driver.get(url);			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
+}
+	
+	public String returnDynamicXpath(String stringToReplace,String stringWithReplace) {
+		return String.format(stringToReplace, stringWithReplace);
+	}
 		
-		}
-	
-	
 	
 	public void tearDown() {
 		DriverFactory.getInstance().closeBrowser();
-	}
+	}	
 }

@@ -1,9 +1,14 @@
 package reusableComponents;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import testBase.DriverFactory;
@@ -100,5 +105,29 @@ public class ActionEngine {
 			ExtentFactory.getInstance().getExtent().log(Status.FAIL, locatorName+" String assertion is failed "+locatorName+" due to exception=>"+e.getMessage());
 		}
 	}
-
+	
+	public void assertConfirmationPopUp(String fieldName) {
+		try {
+			WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),5);
+			wait.until(ExpectedConditions.alertIsPresent()).accept();
+			
+			
+			//log success message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"Acceptance of Confirmation Popup is successful");
+			
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, fieldName+" Acceptance of Confirmation Popup is "+fieldName+" due to exception=>"+e.getMessage());
+		}
+	}
+	
+	public void waitElementToBeClickable(By locator) {
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),5);
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+	
+	public void waitForElementToBeVisible(By locator) {
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
 }

@@ -2,34 +2,50 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import testBase.DriverFactory;
 import testBase.TestBase;
 
 public class HomePageObjects extends TestBase{
-	
 	WebDriver driver=null;
-	By sidebarMenu_Dashboard = By.xpath("//ul[@class='page-sidebar-menu']//i/following-sibling::span[text()='Dashboard']");
 	
-		
-		public void clickOnSideMenu(String menu) {
-			String xpath="//ul[@class='page-sidebar-menu']//i/following-sibling::span[text()='"+menu+"']";
-			DriverFactory.getInstance().getDriver().findElement(By.xpath(xpath)).click();
-		}
-		
-		public void clickOnSideSubMenu(String menu,String submenu) {
-			String menuXpath="//ul[@class='page-sidebar-menu']//i/following-sibling::span[text()='"+menu+"']";
-			DriverFactory.getInstance().getDriver().findElement(By.xpath(menuXpath)).click();
-			String submenuXpath="//ul[@class='page-sidebar-menu']//li/a/i/following-sibling::span[text()='Tasks']/ancestor::a/following-sibling::ul//span[text()='"+submenu+"']";
-			DriverFactory.getInstance().getDriver().findElement(By.xpath(submenuXpath)).click();
-		}
-		
-		public void checkIfDashboardPageIsOpen() {
-			Assert.assertTrue(isElementPresent(DriverFactory.getInstance().getDriver().findElement(sidebarMenu_Dashboard), "DashBoard Menu"));
+	
+	public HomePageObjects() {
+		driver=DriverFactory.getInstance().getDriver();
+	}
+
+	By sidebarMenu_Categories = By.xpath("//a[@class='list-group-item'][text()='CATEGORIES']");
+	By navigation_Home_Link=By.xpath("//a[@class='nav-link'][text()='Home ']");
+	By sidebarmenu_Laptops=By.xpath("//div[@class='list-group']/child::a[text()='Laptops']");
+	String dynamicItemXpathStr="//div[@class='col-lg-9']/div[@class='row']/descendant::a[text()='%s']";
+	By addToCart_Btn=By.xpath("//a[text()='Add to cart']");
+	By navigation_Cart_Link=By.xpath("//a[@class='nav-link'][text()='Cart']");
+	
+	
 			
+		public void clickOnHomeMenu() {
+			waitElementToBeClickable(navigation_Home_Link);
+			click(driver.findElement(navigation_Home_Link),"Navigation home Link");
+		}
+				
+		public void checkIfHomePageIsOpen() {
+			Assert.assertTrue(isElementPresent(driver.findElement(sidebarMenu_Categories), "Home Page"));		
+		}
+		
+		public void clickOnLaptopsCategory() {
+			click(driver.findElement(sidebarmenu_Laptops),"Sidebar Categories Laptops");
+		}
+		
+		public void selectLaptop(String itemName) {
+			click(driver.findElement(By.xpath(returnDynamicXpath(dynamicItemXpathStr,itemName))),"Click "+itemName+" from Laptops");
+		}
+		
+		public void clickOnAddToCart() {
+			click(driver.findElement(addToCart_Btn),"Add to cart button");
+			assertConfirmationPopUp("Addition of product confirmation");			
+		}
+		
+		public void clickOnCartMainMenu() {
+			click(driver.findElement(navigation_Cart_Link),"Cart Main Menu Link");
 		}
 }
