@@ -2,10 +2,9 @@ package testBase;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import com.prateek.automation.configuration.CommonConfig;
+import com.prateek.automation.configuration.CommonConfigHandler;
 import reusableComponents.ActionEngine;
-import reusableComponents.PropertiesOperation;
 
 public class TestBase extends ActionEngine{
 	BrowserFactory bf = new BrowserFactory();
@@ -13,9 +12,9 @@ public class TestBase extends ActionEngine{
 
 	
 	public void launchApplication() throws Exception {
-		
-		String browser=PropertiesOperation.getPropertyValueByKey("browser");
-		String url=PropertiesOperation.getPropertyValueByKey("url");
+		CommonConfig commonConfig = CommonConfigHandler.buildConfig("config.properties");
+		String browser=commonConfig.getAutomationConfig().browser();
+		String url=commonConfig.getApplicationConfig().url();
 		DriverFactory.getInstance().setDriver(bf.createBrowserInstance(browser));
 		WebDriver driver=DriverFactory.getInstance().getDriver();
 		driver.manage().window().maximize();
