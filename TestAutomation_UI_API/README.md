@@ -4,3 +4,4 @@
 2. BDD style framework supporting features, step definations and runner file
 3. TestNG supported
 4. Reporting based on Extent Reporting with TestNG listeners
+5. Using Cfg4j for reading properties file with Interface binding.
