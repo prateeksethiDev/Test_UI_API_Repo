@@ -5,3 +5,4 @@
 3. TestNG supported
 4. Reporting based on Extent Reporting with TestNG listeners
 5. Using Cfg4j for reading properties file with Interface binding.
+6. Bringing all the advantages of Maven + Cucumber + Java 
