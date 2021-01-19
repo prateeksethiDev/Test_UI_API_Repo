@@ -5,14 +5,31 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.CartPageObjects;
 import pageObjects.HomePageObjects;
+import pageObjects.LoginPageObjects;
 import testBase.TestBase;
 
 public class AddToCartSteps {
 	
 	HomePageObjects homePage= new HomePageObjects();
 	CartPageObjects cartPage = new CartPageObjects();
+	LoginPageObjects loginPage= new LoginPageObjects();
+	String titleOfLoginPage=null;
 	
+	@Given("User is on login page")
+	public void user_is_on_login_page() {
+		loginPage.verifyUserIsOnLoginPage();
+	}
 
+	@When("User gets the title of the page")
+	public void user_gets_the_title_of_the_page() {
+		titleOfLoginPage=loginPage.getTitleOfLoginPage();
+	}
+
+	@Then("Page title should be {string}")
+	public void page_title_should_be(String pageTitle) {
+		loginPage.verifyTitleOfLoginPage(pageTitle);
+	}
+	
 	@Given("User is on Home Page")
 	public void user_is_on_home_page() throws Exception {	
 		homePage.login();

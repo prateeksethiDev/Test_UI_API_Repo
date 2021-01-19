@@ -10,6 +10,7 @@
 		<sonar.projectKey>prateekSethiQA_TestAutomation_Repo</sonar.projectKey>
 		<sonar.organization>prateeksethiqa</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -92,8 +93,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<fork>true</fork>
 				</configuration>
 			</plugin>

@@ -17,7 +17,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BrowserFactory {
 
 	//create webdriver object for given browser
-	public WebDriver createBrowserInstance(String browser) {
+	public WebDriver createBrowserInstance(String browser, String execution_mode) {
 		WebDriver driver=null;
 		
 		if(browser.equalsIgnoreCase("chrome")) {
@@ -25,11 +25,14 @@ public class BrowserFactory {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--incognito");
 			options.setAcceptInsecureCerts(true);
-			//driver = new ChromeDriver(options);
+			if(execution_mode.equalsIgnoreCase("local")) {
+			driver = new ChromeDriver(options);
+			}else {
 			try {
 				driver=new RemoteWebDriver(new URL("http://192.168.64.3:30001/wd/hub"),options);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
+			}
 			}
 		}else if(browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();

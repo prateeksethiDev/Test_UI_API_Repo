@@ -11,28 +11,45 @@ import testBase.TestBase;
 
 public class LoginPageObjects extends TestBase{
 	
-	
+	WebDriver driver=null;
+	public LoginPageObjects() {
+		driver=DriverFactory.getInstance().getDriver();
+	}
+
 	By EMAIL=By.name("login[email]");
 	By PASSWORD=By.name("login[password]");
 	By LOGIN_BTN=By.xpath("//button[text()='Login ']");
+	By logIn_Link=By.id("login2");
 	
 	public void enterUserName(String email) {
-		sendKeys(DriverFactory.getInstance().getDriver().findElement(EMAIL),"LoginEmailField",email);
+		sendKeys(driver.findElement(EMAIL),"LoginEmailField",email);
 	}
 	
 	public void enterPassword(String password) {
-		sendKeys(DriverFactory.getInstance().getDriver().findElement(PASSWORD),"LoginEmailField",password);
+		sendKeys(driver.findElement(PASSWORD),"LoginEmailField",password);
 	}
 	
 	public void clickLogin() {
-		click(DriverFactory.getInstance().getDriver().findElement(LOGIN_BTN),"LoginButton");
+		click(driver.findElement(LOGIN_BTN),"LoginButton");
 	}
 	
 	
 	//login to App
 	public void login(String email,String password) {
-		sendKeys(DriverFactory.getInstance().getDriver().findElement(EMAIL),"LoginEmailField",email);
-		sendKeys(DriverFactory.getInstance().getDriver().findElement(PASSWORD),"LoginPasswordField",password);
-		click(DriverFactory.getInstance().getDriver().findElement(LOGIN_BTN),"LoginButton");
+		sendKeys(driver.findElement(EMAIL),"LoginEmailField",email);
+		sendKeys(driver.findElement(PASSWORD),"LoginPasswordField",password);
+		click(driver.findElement(LOGIN_BTN),"LoginButton");
+	}
+	
+	public void verifyUserIsOnLoginPage() {
+		assertWebElementPresent(logIn_Link);
+	}
+	
+	public String getTitleOfLoginPage() {
+		return driver.getTitle();
+	}
+
+	public void verifyTitleOfLoginPage(String pageTitle) {
+		assertTheResult(driver.getTitle().trim().equalsIgnoreCase(pageTitle));		
 	}
 }

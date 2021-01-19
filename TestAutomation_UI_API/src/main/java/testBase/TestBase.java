@@ -2,12 +2,17 @@ package testBase;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
 import com.prateek.automation.configuration.CommonConfig;
 import com.prateek.automation.configuration.CommonConfigHandler;
 import reusableComponents.ActionEngine;
 
 public class TestBase extends ActionEngine{
-	BrowserFactory bf = new BrowserFactory();
+	BrowserFactory browserFactory = new BrowserFactory();
 	//private static boolean skipFlag = false;
 
 	
@@ -15,7 +20,8 @@ public class TestBase extends ActionEngine{
 		CommonConfig commonConfig = CommonConfigHandler.buildConfig("config.properties");
 		String browser=commonConfig.getAutomationConfig().browser();
 		String url=commonConfig.getApplicationConfig().url();
-		DriverFactory.getInstance().setDriver(bf.createBrowserInstance(browser));
+		String execution_mode=commonConfig.getAutomationConfig().execution_mode();
+		DriverFactory.getInstance().setDriver(browserFactory.createBrowserInstance(browser,execution_mode));
 		WebDriver driver=DriverFactory.getInstance().getDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

@@ -3,6 +3,7 @@ package reusableComponents;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -16,6 +17,8 @@ import testBase.ExtentFactory;
 
 
 public class ActionEngine {
+	
+	WebDriver driver=DriverFactory.getInstance().getDriver();
 	
 	public void sendKeys(WebElement element,String fieldName,String valueToBeSent) {		
 		
@@ -188,5 +191,22 @@ public class ActionEngine {
 			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "WebElement with locator: "+ locator+" is not present, validation failed due to exception=>"+e.getMessage());
 		}
 		return text;
+	}
+	
+	public String getTitleOfPage() {
+		return driver.getTitle();
+	}
+	
+	public void assertTheResult(boolean exp) {
+		try {
+			
+			if(exp) {
+				//log success message in extent report
+				ExtentFactory.getInstance().getExtent().log(Status.PASS, "Expression is evaluate to true, validation is passed");
+			}		
+		}catch(Exception e) {
+			//log failure message in extent report
+			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Expression is evaluate to false, validation is failed");
+		}
 	}
 }

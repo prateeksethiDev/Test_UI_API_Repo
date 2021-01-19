@@ -24,6 +24,7 @@ public class HomePageObjects extends TestBase{
 	By userName_Inp=By.id("loginusername");
 	By password_Inp=By.id("loginpassword");
 	By LogIn_Btn=By.xpath("//button[text()='Log in']");
+	By welcome_User_Link=By.xpath("//li/a[text()='Welcome user2@testemail.com']");
 			
 		public void clickOnHomeMenu() {
 			waitElementToBeClickable(navigation_Home_Link);
@@ -52,9 +53,15 @@ public class HomePageObjects extends TestBase{
 		}
 
 		public void login() {
+			if(driver.findElements(welcome_User_Link).size()>0) {
+				clickOnHomeMenu();
+			}else {
 			click(driver.findElement(logIn_Link),"Login Link");
 			sendKeys(driver.findElement(userName_Inp),"UserName","user2@testemail.com");
 			sendKeys(driver.findElement(password_Inp),"Password","testqa");
 			click(driver.findElement(LogIn_Btn), "Login Button");
+			}
 		}
+		
+		
 }
