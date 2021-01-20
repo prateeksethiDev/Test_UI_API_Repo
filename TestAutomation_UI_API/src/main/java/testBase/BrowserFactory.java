@@ -2,6 +2,7 @@ package testBase;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserFactory {
-
+	
+	Logger logger = Logger.getLogger(BrowserFactory.class.getName());
 	//create webdriver object for given browser
 	public WebDriver createBrowserInstance(String browser, String execution_mode) {
 		WebDriver driver=null;
@@ -46,6 +48,8 @@ public class BrowserFactory {
 			InternetExplorerOptions ioptions= new InternetExplorerOptions();
 			ioptions.addCommandSwitches("-private");
 			driver = new InternetExplorerDriver(ioptions);
+		}else {
+			logger.warning("Please pass the correct browser: "+browser);
 		}
 		return driver;
 	}

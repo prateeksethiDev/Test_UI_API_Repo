@@ -23,8 +23,10 @@ public class TestBase extends ActionEngine{
 		String execution_mode=commonConfig.getAutomationConfig().execution_mode();
 		DriverFactory.getInstance().setDriver(browserFactory.createBrowserInstance(browser,execution_mode));
 		WebDriver driver=DriverFactory.getInstance().getDriver();
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//To-Do remove implicit wait
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);		
 		try {
 			driver.get(url);			
 		} catch (Exception e) {

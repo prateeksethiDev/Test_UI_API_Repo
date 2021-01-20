@@ -2,6 +2,10 @@ package testBase;
 
 import org.openqa.selenium.WebDriver;
 
+/**
+ * @author prateek.sethi
+ *
+ */
 public class DriverFactory {
 
 	
@@ -20,9 +24,14 @@ public class DriverFactory {
 	//Factory design Pattern
 	ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 	
-	public WebDriver getDriver() {
+	/**
+	 * this is used to get the driver with ThreadLocal
+	 *
+	 */
+	public synchronized WebDriver getDriver() {
 		return driver.get();
 	}
+	
 	
 	public void setDriver(WebDriver driverParam) {
 		driver.set(driverParam);
