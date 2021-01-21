@@ -11,7 +11,7 @@ import com.prateek.automation.configuration.CommonConfig;
 import com.prateek.automation.configuration.CommonConfigHandler;
 import reusableComponents.ActionEngine;
 
-public class TestBase extends ActionEngine{
+public class TestBase {
 	BrowserFactory browserFactory = new BrowserFactory();
 	//private static boolean skipFlag = false;
 
@@ -34,9 +34,7 @@ public class TestBase extends ActionEngine{
 		}		
 }
 	
-	public String returnDynamicXpath(String stringToReplace,String stringWithReplace) {
-		return String.format(stringToReplace, stringWithReplace);
-	}
+	
 		
 	
 	public void tearDown() {

@@ -209,4 +209,8 @@ public class ActionEngine {
 			ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Expression is evaluate to false, validation is failed");
 		}
 	}
+	
+	public String returnDynamicXpath(String stringToReplace,String stringWithReplace) {
+		return String.format(stringToReplace, stringWithReplace);
+	}
 }

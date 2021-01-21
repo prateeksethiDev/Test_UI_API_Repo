@@ -6,10 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import reusableComponents.ActionEngine;
 import testBase.DriverFactory;
 import testBase.TestBase;
 
-public class LoginPageObjects extends TestBase{
+public class LoginPageObjects extends ActionEngine{
 	
 	WebDriver driver=null;
 	public LoginPageObjects() {

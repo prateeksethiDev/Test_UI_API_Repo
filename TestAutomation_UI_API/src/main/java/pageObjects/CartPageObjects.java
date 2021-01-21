@@ -2,10 +2,12 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import reusableComponents.ActionEngine;
 import testBase.DriverFactory;
 import testBase.TestBase;
 
-public class CartPageObjects extends TestBase{
+public class CartPageObjects extends ActionEngine{
 	
 	WebDriver driver=null;
 

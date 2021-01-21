@@ -3,10 +3,12 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import reusableComponents.ActionEngine;
 import testBase.DriverFactory;
 import testBase.TestBase;
 
-public class HomePageObjects extends TestBase{
+public class HomePageObjects extends ActionEngine{
 	WebDriver driver=null;
 	
 	
