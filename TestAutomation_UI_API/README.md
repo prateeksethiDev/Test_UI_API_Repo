@@ -6,3 +6,11 @@
 4. Reporting based on Extent Reporting with TestNG listeners
 5. Using Cfg4j for reading properties file with Interface binding.
 6. Bringing all the advantages of Maven + Cucumber + Java 
+
+The UML class diagram of the framework is as follows:
+
+
+*****************************************************************************
+*****************************************************************************
+
+![](resources/BDD_Diagram.png)
