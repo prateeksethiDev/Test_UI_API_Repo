@@ -5,13 +5,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.CartPageObjects;
 import pageObjects.HomePageObjects;
+import pageObjects.LoginPageObjects;
 
 public class PurchaseOrderSteps {
 	HomePageObjects homePage= new HomePageObjects();
 	CartPageObjects cartPage = new CartPageObjects();
+	LoginPageObjects loginPage= new LoginPageObjects();
 	
 	@Given("User is present on cart page")
 	public void user_is_on_cart_page() {
+		homePage.clickOnHomeMenu();
+		homePage.checkIfHomePageIsOpen();
 		homePage.clickOnCartMainMenu();
 		cartPage.validateUserOnCartPage();
 	}

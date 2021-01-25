@@ -3,6 +3,10 @@
 @First
 Feature: User should be able to delete already added product from the cart
   
+  Background: User is Logged In
+    Given User has already login in to the application
+    |username|password|
+    |user2@testemail.com|testqa|
   
   Scenario Outline: User should be able to delete the product from the cart
     Given User is on Home Page

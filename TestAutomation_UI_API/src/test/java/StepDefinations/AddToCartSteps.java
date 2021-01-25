@@ -15,24 +15,9 @@ public class AddToCartSteps {
 	LoginPageObjects loginPage= new LoginPageObjects();
 	String titleOfLoginPage=null;
 	
-	@Given("User is on login page")
-	public void user_is_on_login_page() {
-		loginPage.verifyUserIsOnLoginPage();
-	}
-
-	@When("User gets the title of the page")
-	public void user_gets_the_title_of_the_page() {
-		titleOfLoginPage=loginPage.getTitleOfLoginPage();
-	}
-
-	@Then("Page title should be {string}")
-	public void page_title_should_be(String pageTitle) {
-		loginPage.verifyTitleOfLoginPage(pageTitle);
-	}
-	
+		
 	@Given("User is on Home Page")
 	public void user_is_on_home_page() throws Exception {	
-		homePage.login();
 		homePage.clickOnHomeMenu();
 		homePage.checkIfHomePageIsOpen();	
 	}

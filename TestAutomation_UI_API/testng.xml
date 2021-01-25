@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite"  >
-<listeners>
-<listener class-name="reusableComponents.ListenersImplementation"/>
-</listeners>
+<suite name="Suite">
+	<listeners>
+		<listener
+			class-name="reusableComponents.ListenersImplementation" />
+	</listeners>
 
-  <test  name="Add_To_Cart_Test" preserve-order="true">
-    <classes>
-      <class name="runners.AddToCartRunner"/>
-    </classes>
-  </test> 
-  <test  name="Delete_From_Cart_Test" preserve-order="true">
-    <classes>
-      <class name="runners.DeleteItemFromCartRunner"/>
-    </classes>
-  </test> 
-   <test  name="Purchase_Order_Test" preserve-order="true">
-    <classes>
-      <class name="runners.PurcaseOrderRunner"/>
-    </classes>
-  </test> 
+	<test name="Login_Test" preserve-order="true">
+		<classes>
+			<class name="runners.LoginRunner" />
+		</classes>
+	</test>
+	<test name="Add_To_Cart_Test" preserve-order="true">
+		<classes>
+			<class name="runners.AddToCartRunner" />
+		</classes>
+	</test>
+	<test name="Delete_From_Cart_Test" preserve-order="true">
+		<classes>
+			<class name="runners.DeleteItemFromCartRunner" />
+		</classes>
+	</test>
+	<test name="Purchase_Order_Test" preserve-order="true">
+		<classes>
+			<class name="runners.PurcaseOrderRunner" />
+		</classes>
+	</test>
 </suite> 

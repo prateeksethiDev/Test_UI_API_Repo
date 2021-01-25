@@ -17,9 +17,10 @@ public class LoginPageObjects extends ActionEngine{
 		driver=DriverFactory.getInstance().getDriver();
 	}
 
-	By EMAIL=By.name("login[email]");
-	By PASSWORD=By.name("login[password]");
-	By LOGIN_BTN=By.xpath("//button[text()='Login ']");
+	By LOGIN_LABEL=By.xpath("//h5[@id='logInModalLabel']");
+	By EMAIL=By.id("loginusername");
+	By PASSWORD=By.id("loginpassword");
+	By LOGIN_BTN=By.xpath("//button[text()='Log in']");
 	By logIn_Link=By.id("login2");
 	
 	public void enterUserName(String email) {
@@ -37,6 +38,7 @@ public class LoginPageObjects extends ActionEngine{
 	
 	//login to App
 	public void login(String email,String password) {
+		assertWebElementPresent(EMAIL);
 		sendKeys(driver.findElement(EMAIL),"LoginEmailField",email);
 		sendKeys(driver.findElement(PASSWORD),"LoginPasswordField",password);
 		click(driver.findElement(LOGIN_BTN),"LoginButton");
@@ -52,5 +54,12 @@ public class LoginPageObjects extends ActionEngine{
 
 	public void verifyTitleOfLoginPage(String pageTitle) {
 		assertTheResult(driver.getTitle().trim().equalsIgnoreCase(pageTitle));		
+	}
+	
+	public void clickOnLoginLink() {
+		click(driver.findElement(logIn_Link),"Login Link");
+	}
+	public void verifyLoginLabel() {
+		assertWebElementPresent(LOGIN_LABEL);
 	}
 }

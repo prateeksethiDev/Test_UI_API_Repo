@@ -1,13 +1,13 @@
 #Author: prateeksethiDev@gmail.com
+@First
 Feature: User should be able to add product to the Cart
 
-	@First
-  Scenario: Login Page Title
-    Given User is on login page
-    When User gets the title of the page
-    Then Page title should be "STORE"
+  Background: User is Logged In
+    Given User has already login in to the application
+    |username|password|
+    |user2@testemail.com|testqa|
 
-  @First
+
   Scenario Outline: User can select category, search product and add to cart
     Given User is on Home Page
     When User is navigated to <product_category>
