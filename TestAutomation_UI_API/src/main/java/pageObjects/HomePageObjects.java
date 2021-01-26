@@ -18,7 +18,7 @@ public class HomePageObjects extends ActionEngine{
 
 	By sidebarMenu_Categories = By.xpath("//a[@class='list-group-item'][text()='CATEGORIES']");
 	By navigation_Home_Link=By.xpath("//a[@class='nav-link'][text()='Home ']");
-	By sidebarmenu_Laptops=By.xpath("//div[@class='list-group']/child::a[text()='Laptops']");
+	String sidebarmenu_Categories="//div[@class='list-group']/child::a[text()='%s']";
 	String dynamicItemXpathStr="//div[@class='col-lg-9']/div[@class='row']/descendant::a[text()='%s']";
 	By addToCart_Btn=By.xpath("//a[text()='Add to cart']");
 	By navigation_Cart_Link=By.xpath("//a[@class='nav-link'][text()='Cart']");
@@ -37,12 +37,13 @@ public class HomePageObjects extends ActionEngine{
 			Assert.assertTrue(isElementPresent(driver.findElement(sidebarMenu_Categories), "Home Page"));		
 		}
 		
-		public void clickOnLaptopsCategory() {
-			click(driver.findElement(sidebarmenu_Laptops),"Sidebar Categories Laptops");
+		public void clickOnCategory(String categoryName) {
+			click(driver.findElement(By.xpath(returnDynamicXpath(sidebarmenu_Categories,categoryName))),"Sidebar Categories");
 		}
 		
-		public void selectLaptop(String itemName) {
-			click(driver.findElement(By.xpath(returnDynamicXpath(dynamicItemXpathStr,itemName))),"Click "+itemName+" from Laptops");
+		
+		public void selectProduct(String itemName) {
+			click(driver.findElement(By.xpath(returnDynamicXpath(dynamicItemXpathStr,itemName))),"Click "+itemName+" from Products");
 		}
 		
 		public void clickOnAddToCart() {

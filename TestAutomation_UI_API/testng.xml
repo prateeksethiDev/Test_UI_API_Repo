@@ -21,6 +21,11 @@
 			<class name="runners.DeleteItemFromCartRunner" />
 		</classes>
 	</test>
+	<test name="Add_To_Cart_Phones_Test" preserve-order="true">
+		<classes>
+			<class name="runners.AddToCartPhonesRunner" />
+		</classes>
+	</test>
 	<test name="Purchase_Order_Test" preserve-order="true">
 		<classes>
 			<class name="runners.PurcaseOrderRunner" />

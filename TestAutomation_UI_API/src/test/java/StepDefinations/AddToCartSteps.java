@@ -24,12 +24,12 @@ public class AddToCartSteps {
 
 	@When("User is navigated to Laptop")
 	public void user_is_navigated_to_laptop() {
-		homePage.clickOnLaptopsCategory();
+		homePage.clickOnCategory("Laptops");
 	}
 
 	@When("^User select (.*)$")
 	public void user_select_laptop(String product_name) {
-		homePage.selectLaptop(product_name);
+		homePage.selectProduct(product_name);
 	}
 
 	@When("Click on add to cart and accept confirmation popup")
