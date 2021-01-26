@@ -20,7 +20,7 @@ public class CartPageObjects extends ActionEngine{
 	String dynamicXpathStr_deleteLinkForProduct="//div[@class='table-responsive']/descendant::tr[@class='success']/child::td[text()='%s']/following-sibling::td/a[text()='Delete']";
 	By placeOrder_Btn=By.xpath("//button[text()='Place Order']");
 	By placeOrderWindow=By.id("orderModalLabel");
-	By customerName_txt=By.xpath("//input[text()='name']");
+	By customerName_txt=By.xpath("//input[@id='name']");
 	By Country_txt=By.id("country");
 	By City_txt=By.id("city");
 	By credit_card_number_txt=By.id("card");
