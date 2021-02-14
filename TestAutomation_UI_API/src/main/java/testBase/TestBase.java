@@ -39,5 +39,6 @@ public class TestBase {
 	
 	public void tearDown() {
 		DriverFactory.getInstance().closeBrowser();
+		DriverFactory.getInstance().getDriver().get("http://www.google.com");
 	}	
 }

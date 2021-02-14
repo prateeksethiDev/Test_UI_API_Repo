@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Automation Regression Suite" verbose="1" thread-count="5" parallel="tests">
 	<listeners>
 		<listener
 			class-name="reusableComponents.ListenersImplementation" />
 	</listeners>
 
-	<test name="Item_Purchase_Test" preserve-order="true">
+	
+	
+	<test name="API_Test" preserve-order="true">
 		<classes>
-			<class name="runners.LoginRunner" />
-			<class name="runners.AddToCartRunner" />
-			<class name="runners.DeleteItemFromCartRunner" />
-			<class name="runners.AddToCartPhonesRunner" />
-			<class name="runners.PurcaseOrderRunner" />
+			<class name="runners.ApiRunner" />
 		</classes>
 	</test>
 	
