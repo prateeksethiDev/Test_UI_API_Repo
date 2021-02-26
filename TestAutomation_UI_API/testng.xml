@@ -16,10 +16,10 @@
 		</classes>
 	</test>
 	
-	<test name="API_Test" preserve-order="true">
-		<classes>
-			<class name="runners.ApiRunner" />
-		</classes>
-	</test>
+<!-- 	<test name="API_Test" preserve-order="true"> -->
+<!-- 		<classes> -->
+<!-- 			<class name="runners.ApiRunner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 	
 </suite> 
