@@ -31,7 +31,8 @@ public class BrowserFactory {
 			driver = new ChromeDriver(options);
 			}else {
 			try {
-				driver=new RemoteWebDriver(new URL("http://192.168.64.3:30001/wd/hub"),options);
+				//driver=new RemoteWebDriver(new URL("http://192.168.64.3:30001/wd/hub"),options);
+				driver=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}

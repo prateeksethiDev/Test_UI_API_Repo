@@ -1,1 +1,3 @@
 /TEST-runners.AddToCartRunner.xml
+/TEST-runners.ApiRunner.xml
+/TEST-runners.LoginRunner.xml
