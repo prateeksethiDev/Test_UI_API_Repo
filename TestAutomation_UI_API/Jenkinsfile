@@ -31,7 +31,7 @@ pipeline {
   //The post step as sending email that executed always 
   post{    
       always{
-      steps {
+      script {
         sh label: '',script: 'docker-compose -f TestAutomation_UI_API/docker-compose-v3.yml down'
       }
       
