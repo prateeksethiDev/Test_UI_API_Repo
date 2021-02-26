@@ -18,7 +18,7 @@ pipeline {
     stage("Spin up the Selenium Grid") {
       steps {
       	echo 'Spining up the Selenium Grid'
-         sh label: '',script: 'docker-compose -f TestAutomation_UI_API/docker-compose-v3.yml up --scale chrome=3'
+         sh label: '',script: 'docker-compose -f TestAutomation_UI_API/docker-compose-v3.yml up --scale chrome=3 &'
       }
     }
     stage("Build and run tests") {
