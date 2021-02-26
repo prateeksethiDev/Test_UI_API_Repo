@@ -41,6 +41,10 @@ pipeline {
   //The post step as sending email that executed always 
   post{    
       always{
+      steps {
+        sh label: '',script: 'docker-compose -f ./docker-compose-v3.yml down'
+      }
+      
              emailext attachLog: true, body: '''Hello Admin,
 
 Please find the the attached test execution report for project: $PROJECT_NAME - BUILD# - $BUILD_NUMBER
@@ -49,8 +53,6 @@ Build url is : $BUILD_URL
 
 ''', compressLog: true, subject: '[$BUILD_STATUS] - $PROJECT_NAME - $BRANCH_NAME - BUILD# - $BUILD_NUMBER', to: 'testautomationwizard@gmail.com' 
       }
-      always{
-            sh label: '',script: 'docker-compose -f ./docker-compose-v3.yml down'
-      }
+      
   } 
 }
