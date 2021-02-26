@@ -1,18 +1,8 @@
 pipeline {
   agent any
-  //Parameterize the build
-  parameters {
-  	choice (name :'VERSION',choices:['1.1.0','1.2.0','1.3.0'], description:'The version of automation code')
-    booleanParam(name: 'RunPreCleanup', defaultValue: true, description: 'To cleanup the Jenkins workspace') 
-  }
-  
   stages {
     stage("Cleanup Workspace") {
-     when{
-          expression {
-             params.RunPreCleanup
-          }     
-      }  
+     
       steps {
         deleteDir()
       }
@@ -28,13 +18,13 @@ pipeline {
     stage("Spin up the Selenium Grid") {
       steps {
       	echo 'Spining up the Selenium Grid'
-         sh label: '',script: 'docker-compose -f ./docker-compose-v3.yml up --scale chrome=3'
+         sh label: '',script: 'docker-compose -f TestAutomation_UI_API/docker-compose-v3.yml up --scale chrome=3'
       }
     }
     stage("Build and run tests") {
       steps {
         echo 'Running Test Automation'
-    	sh label: '', script: 'mvn -f MobileAutomata/pom.xml clean test'
+    	sh label: '', script: 'mvn -f TestAutomation_UI_API/pom.xml clean test'
       }
     }  
   }
@@ -42,7 +32,7 @@ pipeline {
   post{    
       always{
       steps {
-        sh label: '',script: 'docker-compose -f ./docker-compose-v3.yml down'
+        sh label: '',script: 'docker-compose -f TestAutomation_UI_API/docker-compose-v3.yml down'
       }
       
              emailext attachLog: true, body: '''Hello Admin,
