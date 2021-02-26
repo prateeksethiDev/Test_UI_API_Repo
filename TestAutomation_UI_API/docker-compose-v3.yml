@@ -16,19 +16,6 @@ services:
       - NODE_MAX_SESSION=4
       - NODE_MAX_INSTANCES=4
     
-  edge:
-    image: selenium/node-edge:3.141.59-20210128
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    ports:
-      - "6901:5900"
-
   firefox:
     image: selenium/node-firefox:3.141.59-20210128
     volumes:
