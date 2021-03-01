@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Test Automation Regression Suite" verbose="1" thread-count="5" parallel="classes">
+<suite name="Test Automation Regression Suite" verbose="1" thread-count="5" parallel="tests">
 	<listeners>
 		<listener
 			class-name="reusableComponents.ListenersImplementation" />
@@ -11,15 +11,14 @@
 			<class name="runners.LoginRunner" />
 			<class name="runners.AddToCartRunner" />
 			<class name="runners.DeleteItemFromCartRunner" />
-<!-- 		<class name="runners.AddToCartPhonesRunner" /> -->
-<!-- 		<class name="runners.PurcaseOrderRunner" /> -->
+			<class name="runners.AddToCartPhonesRunner" />
+			<class name="runners.PurcaseOrderRunner" />
 		</classes>
 	</test>
 	
-<!-- 	<test name="API_Test" preserve-order="true"> -->
-<!-- 		<classes> -->
-<!-- 			<class name="runners.ApiRunner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
-	
+	<test name="API_Test" preserve-order="true">
+		<classes>
+			<class name="runners.ApiRunner" />
+		</classes>
+	</test>	
 </suite> 

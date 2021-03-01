@@ -1,5 +1,7 @@
 package reusableComponents;
 
+import java.util.function.Function;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -141,6 +143,17 @@ public class ActionEngine {
 	public void waitElementToBeClickable(By locator) {
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),5);
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+	
+	public void waitForElementToBeAccessible(By locator) {
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getInstance().getDriver(),10);
+		wait.until(new Function<WebDriver, WebElement>() 
+	    {    
+	        public WebElement apply(WebDriver driver) 
+	        {    
+	            return driver.findElement(locator);    
+	        }
+	    });
 	}
 	
 	public void waitForElementToBeVisible(By locator) {

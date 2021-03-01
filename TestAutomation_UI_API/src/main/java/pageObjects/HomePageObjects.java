@@ -47,6 +47,7 @@ public class HomePageObjects extends ActionEngine{
 		}
 		
 		public void clickOnAddToCart() {
+			waitForElementToBeAccessible(addToCart_Btn);
 			click(driver.findElement(addToCart_Btn),"Add to cart button");
 			assertConfirmationPopUp("Addition of product confirmation");			
 		}
