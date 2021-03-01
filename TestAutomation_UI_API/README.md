@@ -7,6 +7,7 @@
 5. Using Cfg4j for reading properties file with Interface binding.
 6. Bringing all the advantages of Maven + Cucumber + Java.
 7. Excel reader utility to read test data from excel sheet with Scenario outline.
+8. Integration of Docker Selenium Grid with Jenkins.
 
 The UML class diagram of the framework is as follows:
 
